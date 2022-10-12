@@ -1,0 +1,36 @@
+DDL
+A set of statements that allow the user to define, modify data structures or objects such as tables.
+It allows to CREATE, ALTER, DROP, RENAME, TRUNCATE
+
+THE CREATE STATEMENT
+Used for creating entire databases and database objects such as tables
+CREATE TABLE: CREATE object_type object_name;
+CREATE TABLE WITH COLUMNS: CREATE TABLE object_name (column_name data_type);
+Example: CREATE TABLE SALES (purchase_number INT);
+
+The table name can coincide with the daatabase name
+
+
+THE ALTER STATEMENT
+Used when altering existing objects
+- REMOVE
+-RENAME
+- ADD (Adding a new column in the table)
+ALTER TABLE SALES
+ADD COLUMN date_of_purchase DATE;
+
+THE DROP STATEMENT
+Used for deleting database object
+DROP object_type object_name;
+DROP TABLE customers;
+
+
+THE RENAME STATEMENT
+Allows you to rename an object
+RENAME object_type object_name TO new_object_name;
+RENAME TABLE customers TO customer_data;
+
+THE TRUNCATE STATEMENT
+Instead of deleting an entire table through DROP, we can also remove its data and continue to have the table as an object in the database.
+TRUNCATE object_type object_name;
+TRUNCATE TABLE customers;
