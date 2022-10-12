@@ -1,1 +1,27 @@
-
+  SQL = Structured query language
+  It is a programming language specifically designed for working with databases
+  It allows you to CREATE, MANIPULATE, SHARE data especially from Relational database management systems.
+  SQL allows you to write queries that the computer can execute and then provide database insights in return.
+  
+  
+  There are other platforms as well such as Oracle, SQL SERVER, Maria DB, PostGRE sql, SQLite
+  MYSQL is reliable, mature and Open source Relational DBMS
+  
+  
+  INTRODUCTION TO DATABASES
+  RECORD - A record is each entry that exists in the table. It corresponds to the row of a table.
+  FIELD - It is a column in a table which contains specific information about every record in the table
+  STORED TABULAR DATA - When data is organized in rows and columns.
+  RELATIONAL DB - A few related tables form a relational database.
+  ENTITY - The smallest unit that contain meaningful set of data. Hence ROWS represent HORIZONTAL ENTITY. COLUMNS represent VERTICAL ENTITY.
+  DATABASE OBJECT - Table can be referred as entity/ DB object.
+  
+  SQL is DECLARATIVE(non-procedural) programming. It mainly concentrates on what to fetch instead of 'HOW'. 
+  It has an optimizer which separates your task into smaller steps.
+  
+  MAIN COMPONENTS OF SQL SYNTAX
+  DDL (Data Definition Language)
+  DML (Data Manipulation Language)
+  TCL (Transaction Control Language)
+  
+  
