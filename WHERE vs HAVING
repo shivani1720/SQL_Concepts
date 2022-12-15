@@ -69,6 +69,13 @@ DENSE_RANK() OVER(ORDER BY salary DESC) as dense_rnk,
 ROW_NUM() OVER(order by SALARY DESC) as rn
 FROM EMP
 
+NOTE: If you want rank department wise then
+SELECT EMP_ID, DEPT_NAME, EMP_NAME
+RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) as RNK,
+DENSE_RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) as dense_rnk,
+ROW_NUM() OVER(PARTITION BY dept_id order by SALARY DESC) as rn
+FROM EMP
+
 
 
 
