@@ -60,12 +60,16 @@ SELECT manager_id FROM EMPLOYEE
 
 4. RANK, DENSE_RANK, ROW_NUMBER
 RANK will skip the next available ranking value
-whereas DENSE_RANK would still use the next chronological ranking value.
+whereas DENSE_RANK would still use the next chronological ranking value
+ROW_NUMBER() will give running number value
 
 SELECT EMP_ID, DEPT_NAME, EMP_NAME
 RANK() OVER(ORDER BY salary DESC) as RNK,
-DENSE_RANK() OVER(ORDER BY salary DESC) as dense_rnk
+DENSE_RANK() OVER(ORDER BY salary DESC) as dense_rnk,
+ROW_NUM() OVER(order by SALARY DESC) as rn
 FROM EMP
+
+
 
 
 
