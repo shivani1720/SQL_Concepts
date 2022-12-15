@@ -87,6 +87,10 @@ WHERE rnk = 1;
 
 SELECT * FROM emp WHERE department_id not in (SELECT dep_id FROM dept)
 
+SELECT emp.*, dept.dept_id, dept.dep_name FROM emp
+LEFT JOIN dept ON emp.department_id = dept.dep_id
+WHERE dept.dep_name IS NULL;
+
 
 
 
