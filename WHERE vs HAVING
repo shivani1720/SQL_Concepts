@@ -83,6 +83,10 @@ SELECT * FROM
 RANK() OVER(PARTITION BY dept_id ORDER BY salary DESC) as RNK FROM emp) a
 WHERE rnk = 1;
 
+5. Employees who are not present in department table.
+
+SELECT * FROM emp WHERE department_id not in (SELECT dep_id FROM dept)
+
 
 
 
