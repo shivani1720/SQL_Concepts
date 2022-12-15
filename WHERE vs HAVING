@@ -12,6 +12,35 @@ GROUP BY department_id
 HAVING AVG(salary) > 15000;
 
 3. CONVERT ROWS TO COLUMNS AND COLUMNS TO ROWS WITHOUT USING PIVOT FUNCTION
+SELECT emp_id,
+sum(CASE when salary_component_type = 'salary' then val end) as salary,
+sum(CASE when salary_component_type = 'bonus' then val end) as bonus,
+sum(CASE when salary_component_type = 'hike_percent' then val end) as hike_percent
+FROM emp_compensation
+GROUP BY emp_id;
+
+4. Design another table as well
+SELECT emp_id,
+sum(CASE when salary_component_type = 'salary' then val end) as salary,
+sum(CASE when salary_component_type = 'bonus' then val end) as bonus,
+sum(CASE when salary_component_type = 'hike_percent' then val end) as hike_percent
+into emp_compensation_pivot
+FROM emp_compensation
+GROUP BY emp_id;
+
+5. Convert COLUMNS to ROWS
+
+SELECT * FROM
+(SELECT emp_id, 'salary' as salary_component_type, salary as val FROM emp_compensation_pivot
+UNION ALL
+SELECT emp_id, 'bonus' as salary_component_type, bonus as val FROM emp_compensation_pivot
+UNION ALL
+SELECT emp_id, 'hike_percent' as salary_component_type, hike_percent as val FROM emp_compensation_pivot
+)
+ORDER BY emp_id
+
+
+
 
 
 
