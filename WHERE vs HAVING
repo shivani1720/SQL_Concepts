@@ -58,6 +58,14 @@ SELECT manager_id FROM EMPLOYEE
 UNION ALL
 SELECT manager_id FROM EMPLOYEE
 
+4. RANK, DENSE_RANK, ROW_NUMBER
+RANK will skip the next available ranking value
+whereas DENSE_RANK would still use the next chronological ranking value.
+
+SELECT EMP_ID, DEPT_NAME, EMP_NAME
+RANK() OVER(ORDER BY salary DESC) as RNK,
+DENSE_RANK() OVER(ORDER BY salary DESC) as dense_rnk
+FROM EMP
 
 
 
