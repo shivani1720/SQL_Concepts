@@ -42,6 +42,11 @@ ORDER BY emp_id
 1. How to find duplicates in a given table?
 SELECT emp_id, COUNT(*) FROM EMP GROUP BY emp_id HAVING COUNT(*) > 1;
 
+2. How to delete duplicates
+SELECT * FROM EMP
+with CTE as (SELECT *, row_number() over (partition by emp_id order by emp_id) as rn FROM EMP)
+DELETE FROM CTE where rn > 1;
+
 
 
 
