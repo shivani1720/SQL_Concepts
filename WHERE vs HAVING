@@ -39,6 +39,9 @@ SELECT emp_id, 'hike_percent' as salary_component_type, hike_percent as val FROM
 )
 ORDER BY emp_id
 
+1. How to find duplicates in a given table?
+SELECT emp_id, COUNT(*) FROM EMP GROUP BY emp_id HAVING COUNT(*) > 1;
+
 
 
 
