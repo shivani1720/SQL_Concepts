@@ -47,6 +47,17 @@ SELECT * FROM EMP
 with CTE as (SELECT *, row_number() over (partition by emp_id order by emp_id) as rn FROM EMP)
 DELETE FROM CTE where rn > 1;
 
+3. Difference btwn UNION AND UNION ALL
+Union will give distinct/ unique values if we combine two tables. Whereas UNION ALL will completely combine both the tables as it is.
+
+SELECT manager_id FROM EMPLOYEE
+UNION
+SELECT manager_id FROM EMPLOYEE
+
+SELECT manager_id FROM EMPLOYEE
+UNION ALL
+SELECT manager_id FROM EMPLOYEE
+
 
 
 
