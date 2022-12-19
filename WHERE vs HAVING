@@ -213,6 +213,34 @@ FROM ORDERS_UNIQUE ou
 RIGHT JOIN RETURNS_UNIQUE ru
 ON ou.ORDER_ID = ru.order_id;
 
+d. FULL OUTER JOIN
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+SELECT coalesce(ou.order_id, ru.order_id) as order_final, ou.order_id, ru.order_id, sales
+FROM ORDERS_UNIQUE ou
+FULL OUTER JOIN RETURNS_UNIQUE ru 
+ON ou.order_id = ru.order_id;
+
+NULL cannoy br compared to another NULL.
+
+14. Calculate MODE using sql
+insert into mode values (1),(2),(2),(3),(3),(3),(3),(4),(5);  ---MODE = 3
+(1),(2),(2),(3),(3),(4),(5) --- MODE = 2 and 3
+
+a. USING CTE
+
+WITH freq_cte as 
+(SELECT id, count(*) FROM mode group by id)
+SELECT * FROM freq_cte
+where freq = (SELECT max(freq) FROM freq_cte);
+
+b. USING RANK FUNCTION
+
+with freq_cte as
+(SELECT id, count(*) as freq FROM mode group by id)
+SELECT *, RANK() OVER(ORDER BY freq DESC) as rn FROM freq_cte
+
+
 
 
 
