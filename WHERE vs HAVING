@@ -170,6 +170,19 @@ MASTER_DATA md LEFT JOIN sales s
 ON md.product_name = s.product_name AND md.color_name = s.color AND md.size = s.size
 ORDER BY total_amount;
 
+USE CASE2: Prepare large no of rows for performance testing
+ 
+a. SELECT row_number() OVER(ORDER BY t.order_id) AS order_id, t.product_name, t.color, t.size, t.amount FROM transactions t, master..orders o;
+
+b. SELECT * into TRANSACTION_TEST FROM TRANSACTIONS where 1=2; --(Same schema without data)
+
+c. INSERT INTO transaction_test
+   SELECT row_number() OVER(ORDER BY t.order_id) AS order_id, t.product_name, t.color, t.size, 
+   t.amount FROM transactions t, master..orders o
+   LIMIT 1000;
+
+
+
 
 
 
