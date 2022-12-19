@@ -100,6 +100,8 @@ WHERE rn = 2;
 
 SELECT * FROM ORDERS WHERE customer_name = 'Shilpa';
 
+SELECT * FROM ORDERS WHERE UPPER(customer_name) = 'SHILPA';
+
 
 
 
