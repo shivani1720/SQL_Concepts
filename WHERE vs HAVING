@@ -192,13 +192,28 @@ SELECT o.state, sum(o.sales) as SALES FROM ORDERS_UNIQUE ou INNER JOIN RETURNS_U
 ON ou.order_id = ru.order_id
 GROUP BY ou.state;
 
-b. LEFT JOIN: The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). 
+b. Select all records which were NON-returned.
+LEFT JOIN: The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). 
 The result is 0 records from the right side, if there is no match.
+
 
 SELECT ou.order_id, ru.order_id, ou.sales
 FROM ORDERS_UNIQUE ou
 LEFT JOIN RETURNS_UNIQUE ru 
-ON ou.order_id = ru.order_id;
+ON ou.order_id = ru.order_id
+WHERE ru.order_id IS NULL;
+
+c. RIGHT JOIN
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). 
+The result is 0 records from the left side, if there is no match.
+
+Give me all records which were returned
+SELECT ou.ORDER_ID, ru.ORDER_ID, ou.sales
+FROM ORDERS_UNIQUE ou
+RIGHT JOIN RETURNS_UNIQUE ru
+ON ou.ORDER_ID = ru.order_id;
+
+
 
 
 
