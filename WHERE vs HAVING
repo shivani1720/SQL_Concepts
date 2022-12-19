@@ -112,6 +112,19 @@ INNER JOIN emp m
 ON e.mananger_id = m.emp_id
 WHERE e.salary > m.salary;
 
+9. Joins
+
+
+10. Update query to swap the gender
+UPDATE orders
+SET customer_gender = 
+(CASE 
+WHEN customer_gender = 'MALE' then 'FEMALE'
+WHEN customer_gender = 'FEMALE' then 'MALE'
+END)
+
+                     
+
 
 
 
