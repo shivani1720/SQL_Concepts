@@ -102,6 +102,18 @@ SELECT * FROM ORDERS WHERE customer_name = 'Shilpa';
 
 SELECT * FROM ORDERS WHERE UPPER(customer_name) = 'SHILPA';
 
+8. Give me records where employee_salary > manager_salary. Self Join (Table has emp_id, emp_name, deaprtment_id, salary, manager_id)
+
+Self join is a regular join but the table is joined with itself
+
+SELECT e.emp_id, e.emp_name, m.emp_name as MANAGER_NAME, e.salary, m.salary as MANAGER_SALARY
+FROM emp e
+INNER JOIN emp m
+ON e.mananger_id = m.emp_id
+WHERE e.salary > m.salary;
+
+
+
 
 
 
