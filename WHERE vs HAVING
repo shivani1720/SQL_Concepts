@@ -237,8 +237,11 @@ where freq = (SELECT max(freq) FROM freq_cte);
 b. USING RANK FUNCTION
 
 with freq_cte as
-(SELECT id, count(*) as freq FROM mode group by id)
-SELECT *, RANK() OVER(ORDER BY freq DESC) as rn FROM freq_cte
+(SELECT id, count(*) as freq FROM mode group by id),
+rnk_cte as
+(SELECT *, RANK() OVER(ORDER BY freq DESC) as rn FROM freq_cte)
+
+SELECT * FROM rnk_cte WHERE RN = 1;
 
 
 
