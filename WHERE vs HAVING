@@ -180,6 +180,25 @@ c. INSERT INTO transaction_test
    SELECT row_number() OVER(ORDER BY t.order_id) AS order_id, t.product_name, t.color, t.size, 
    t.amount FROM transactions t, master..orders o
    LIMIT 1000;
+   
+13. JOINS CONCEPT
+INNER JOIN: The INNER JOIN keyword selects records that have matching values in both tables
+ORDERS_UNIQUE: 5009 records
+RETURNS_UNIQUE: 296 records
+NON-RETURNED: 4713 records
+
+a. Select all records which were returned state wise and with total sales
+SELECT o.state, sum(o.sales) as SALES FROM ORDERS_UNIQUE ou INNER JOIN RETURNS_UNIQUE ru
+ON ou.order_id = ru.order_id
+GROUP BY ou.state;
+
+b. LEFT JOIN: The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). 
+The result is 0 records from the right side, if there is no match.
+
+SELECT ou.order_id, ru.order_id, ou.sales
+FROM ORDERS_UNIQUE ou
+LEFT JOIN RETURNS_UNIQUE ru 
+ON ou.order_id = ru.order_id;
 
 
 
