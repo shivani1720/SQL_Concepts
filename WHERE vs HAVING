@@ -96,6 +96,10 @@ WHERE dept.dep_name IS NULL;
 SELECT * FROM (SELECT emp.*, DENSE_RANK() OVER(PARTITION BY department_name ORDER BY salary DESC) as rn FROM EMP) a 
 WHERE rn = 2;
 
+7. Find all transactions done by Shilpa
+
+SELECT * FROM ORDERS WHERE customer_name = 'Shilpa';
+
 
 
 
