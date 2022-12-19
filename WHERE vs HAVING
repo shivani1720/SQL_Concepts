@@ -91,6 +91,11 @@ SELECT emp.*, dept.dept_id, dept.dep_name FROM emp
 LEFT JOIN dept ON emp.department_id = dept.dep_id
 WHERE dept.dep_name IS NULL;
 
+6. Second highest salary in each department
+
+SELECT * FROM (SELECT emp.*, DENSE_RANK() OVER(PARTITION BY department_name ORDER BY salary DESC) as rn FROM EMP) a 
+WHERE rn = 2;
+
 
 
 
