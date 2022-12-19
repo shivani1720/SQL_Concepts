@@ -132,6 +132,46 @@ UNION ALL SELECT 2 as emp_id, 2000 as emp_salary, 2 as dep_id
 UNION ALL SELECT 3 as emp_id, 3000 as emp_salary, 3 as dep_id
 )
 
+12. SELF JOIN
+- insert into products VALUES 
+(1, 'A'),
+(2, 'B'),
+(3, 'C'),
+(4, 'D'),
+(5, 'E');
+- insert into colors values (1,'Blue'),(2,'Green'),(3,'Orange')
+- insert into sizes values (1,'M'),(2,'L'),(3,'XL');
+- create table transactions
+(
+order_id int,
+product_name varchar(20),
+color varchar(10),
+size varchar(10),
+amount int
+);
+insert into transactions values (1,'A','Blue','L',300),(2,'B','Blue','XL',150),(3,'B','Green','L',250),(4,'C','Blue','L',250),
+(5,'E','Green','L',270),(6,'D','Orange','L',200),(7,'D','Green','M',250);
+
+SELECT p.*, c.* FROM products p, colors c; (Altogether 15 records, each rec of product table joined with each record of color table)
+SELECT product_name, color, size, sum(amount) as total_amount  FROM transactions
+GROUP BY product_name, color, size;
+
+
+PROBLEM: You need the combination of all the products sols, with amount. Show 0 or NULL amount as well
+
+STEP 1: SELECT p.name, c.color, s.size FROM products p, colors c, sizes s; (All the combinations appear)
+STEP 2:
+with MASTER_DATA as (
+SELECT p.name as product_name, c.color as color_name, s.size as size FROM products p, colors c, sizes s),
+sales as (SELECT product_name, color, size, sum(amount) as total_amount  FROM transactions
+GROUP BY product_name, color, size)
+SELECT md.product_name, md.color_name, md.size, isnull(s.total_amount, 0) as total_amount FROM 
+MASTER_DATA md LEFT JOIN sales s 
+ON md.product_name = s.product_name AND md.color_name = s.color AND md.size = s.size
+ORDER BY total_amount;
+
+
+
 
 
 
