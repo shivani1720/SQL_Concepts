@@ -123,7 +123,14 @@ WHEN customer_gender = 'MALE' then 'FEMALE'
 WHEN customer_gender = 'FEMALE' then 'MALE'
 END)
 
-                     
+11. How to create temporary table
+
+with EMP as
+(
+SELECT 1 as emp_id, 1000 as emp_salary, 1 as dep_id
+UNION ALL SELECT 2 as emp_id, 2000 as emp_salary, 2 as dep_id
+UNION ALL SELECT 3 as emp_id, 3000 as emp_salary, 3 as dep_id
+)
 
 
 
