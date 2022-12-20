@@ -221,6 +221,8 @@ FROM ORDERS_UNIQUE ou
 FULL OUTER JOIN RETURNS_UNIQUE ru 
 ON ou.order_id = ru.order_id;
 
+ISNULL() replaces null value with a specified replacement value
+COALESCE() returns the first not-null argument.
 NULL cannoy br compared to another NULL.
 
 14. Calculate MODE using sql
