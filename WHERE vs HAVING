@@ -265,6 +265,45 @@ cte_rank as (SELECT *, rank() over(ORDER BY id ASC) as rn FROM cte_dups)
 SELECT l.*, 'DUP' + cast(cr.rn as varchar(2)) as output
 FROM list l LEFT JOIN cte_rank cr ON l.id = cr.id;
 
+16. MASTER SQL UPDATE STATEMENT
+
+a. UPDATE SYNTAX FOR SINGLE VALUE UPDATE
+UPDATE emp SET salary = 12000;
+
+b. UPDATE SYNTAX WITH WHERE CLAUSE
+UPDATE emp 
+SET salary = 12000 WHERE emp_id = 1;
+
+c. UPDATE MULTIPLE VALUES
+UPDATE emp
+SET salary = 12000, dep_id = 200 WHERE emp_id = 2;
+
+d. UPDATE col with constant value and derivations
+UPDATE emp SET salary = salary + 1000;
+
+UPDATE emp SET salary = salary * 1.1 where emp_id = 3;
+
+UPDATE emp set salary = case when dep_id = 100 then salary * 1.1
+when dep_id = 200 then salary * 1.2 else salary end;
+
+e. UPDATE using join
+UPDATE emp
+SET dep_name = d.dep_name
+FROM emp e
+INNER JOIN dept d ON e.dep_id = d.dep_id;
+
+INTERVIEW QUESTIONS ON UPDATE:
+ALTER TABLE emp ADD gender varchar(10)
+
+UPDATE emp SET gender = case when dep_id = 100 then 'MALE' else 'FEMALE' end;
+Swap the genders
+
+UPDATE emp SET gender = CASE WHEN gender = 'Male' then 'Female' else 'MALE' end
+
+CHECK BEFORE UPDATING
+Select *, CASE WHEN gender = 'Male' then 'Female' else 'MALE' end FROM emp
+
+
 
 
 
