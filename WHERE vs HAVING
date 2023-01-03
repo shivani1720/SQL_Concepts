@@ -303,6 +303,15 @@ UPDATE emp SET gender = CASE WHEN gender = 'Male' then 'Female' else 'MALE' end
 CHECK BEFORE UPDATING
 Select *, CASE WHEN gender = 'Male' then 'Female' else 'MALE' end FROM emp
 
+17. Write a sql to find business day betweeen create date and resolved date by excluding weekends and public holidays
+
+SELECT *,
+datediff(day, create_date, resolved_date) as actual_days,
+datepart(week, create_date),
+datepart(week, resolved_date),
+datediff(week, create_date, resolved_date) as week_diff
+FROM tickets;
+
 
 
 
