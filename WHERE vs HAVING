@@ -245,6 +245,27 @@ rnk_cte as
 
 SELECT * FROM rnk_cte WHERE RN = 1;
 
+14. FULL OUTER JOIN
+--Find change in employee status
+
+SELECT isnull(e20.emp_id, e21.emp_id) as emp_id,
+case when e20.designation != e21.designation then 'PROMOTED'
+when e21.designation is null then 'Resigned'
+else 'New' end as comment
+FROM emp_2020 e20
+FULL OUTER JOIN emp_2021 e21 ON e20.emp_id = e21.emp_id
+WHERE isnull(e20.designation, 'xxx') != isnull(e21.designation, 'yyy')
+
+15. RANK the duplicate records
+--rank duplicate records
+
+with cte_dups as 
+(SELECT id from list GROUP BY id HAVING count(*) > 1),
+cte_rank as (SELECT *, rank() over(ORDER BY id ASC) as rn FROM cte_dups)
+SELECT l.*, 'DUP' + cast(cr.rn as varchar(2)) as output
+FROM list l LEFT JOIN cte_rank cr ON l.id = cr.id;
+
+
 
 
 
