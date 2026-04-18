@@ -10,3 +10,14 @@ insert into emp values(5,'Mudit',12000,6);
 insert into emp values(6,'Agam',12000,2);
 insert into emp values(7,'Sanjay',9000,2);
 insert into emp values(8,'Ashish',5000,2);
+
+
+SOLUTION:
+SELF JOIN: In self join the table is joined with itself. 
+There is no specific SELF JOIN keyword; it is implemented using standard join types like INNER JOIN, LEFT JOIN, or CROSS JOIN.
+Output should be 
+emp_id, emp_name, manager_name, emp_salary, manager_salary
+
+SELECT e.emp_id, e.emp_name, m.emp_name as manager_name, e.salary as emp_salary, m.salary as manager_salary from emp e
+INNER JOIN emp m ON e.manager_id = m.emp_id
+WHERE e.salary > m.salary
