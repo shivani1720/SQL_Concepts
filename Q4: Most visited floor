@@ -1,0 +1,14 @@
+create table entries ( 
+name varchar(20),
+address varchar(20),
+email varchar(20),
+floor int,
+resources varchar(10));
+
+OUTPUT AS
+name, total_visits, most_visited_floor, resources_used
+
+SELECT name, floor, count(1) no_of_floor_visits,
+rank(1) over (partition by name order by count(1) desc) as rn
+FROM entries
+GROUP BY name, floor
