@@ -32,3 +32,8 @@ SELECT artist_name, concert_revenue,
 DENSE_RANK() OVER (ORDER BY concert_revenue) AS dense_rank_num
 FROM concerts
 
+2. list the artists by country in the chronological order of their year of formation. 
+SELECT artist_name, country, year_of_formation
+RANK() OVER (PARTITION BY country ORDER BY year_of_formation) AS row_num
+FROM Concerts
+
