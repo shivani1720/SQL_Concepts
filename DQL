@@ -1,0 +1,23 @@
+DQL is used to fetch data from the database. 
+The main command is SELECT, which retrieves records based on the query.
+
+DQL has only one command, SELECT. 
+Other terms like FROM, WHERE, GROUP BY, HAVING, ORDER BY, DISTINCT and LIMIT are clauses of SELECT, not separate commands.
+
+1. GROUP BY: We can aggregate a column based on its count
+SELECT doctor_id, count(*) 
+FROM caltaycs.patients
+GROUP BY doctor_id
+
+2. ORDER BY - Sorts the result set by one or more columns
+SELECT doctor_id, count(*)  as cnt
+FROM caltaycs.patients
+GROUP BY doctor_id
+ORDER BY cnt DESC
+
+3. HAVING - Filters the results of GROUP BY
+SELECT doctor_id, count(*)  as cnt
+FROM caltaycs.patients
+GROUP BY doctor_id
+HAVING cnt > 5
+ORDER BY cnt DESC;
