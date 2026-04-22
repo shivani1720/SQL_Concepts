@@ -1,1 +1,6 @@
+Ranking Functions helps us assign ranks to rows based on partitioning and order expressions.
 
+SELECT RANK() DENSE_RANK() ROW_NUMBER() OVER (
+PARTITION BY column
+ORDER BY column )
+FROM table_name
