@@ -27,7 +27,7 @@ foreign key (doctor_id) REFERENCES doctor(id)
 );
 
 
-THE ALTER STATEMENT
+3.THE ALTER STATEMENT
 Used when altering existing objects
 - REMOVE
 -RENAME
@@ -35,18 +35,19 @@ Used when altering existing objects
 ALTER TABLE SALES
 ADD COLUMN date_of_purchase DATE;
 
-THE DROP STATEMENT
+4. THE DROP STATEMENT
 Used for deleting database object
 DROP object_type object_name;
 DROP TABLE customers;
 
 
-THE RENAME STATEMENT
+5. THE RENAME STATEMENT
 Allows you to rename an object
 RENAME object_type object_name TO new_object_name;
 RENAME TABLE customers TO customer_data;
 
-THE TRUNCATE STATEMENT
-Instead of deleting an entire table through DROP, we can also remove its data and continue to have the table as an object in the database.
+6. THE TRUNCATE STATEMENT
+Instead of deleting an entire table through DROP, we can also remove its data 
+and continue to have the table as an object in the database.
 TRUNCATE object_type object_name;
 TRUNCATE TABLE customers;
