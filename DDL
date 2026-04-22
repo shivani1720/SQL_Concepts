@@ -1,14 +1,30 @@
 DDL
-A set of statements that allow the user to define, modify data structures or objects such as tables.
+DDL is used to define, modify, and delete the structure or schema of a database. 
+It acts as the architect, establishing the "blueprint" for how data will be stored.
 It allows to CREATE, ALTER, DROP, RENAME, TRUNCATE
 
-THE CREATE STATEMENT
+1. THE CREATE STATEMENT
 Used for creating entire databases and database objects such as tables
+CREATE DATABASE caltays;
+
 CREATE TABLE: CREATE object_type object_name;
 CREATE TABLE WITH COLUMNS: CREATE TABLE object_name (column_name data_type);
-Example: CREATE TABLE SALES (purchase_number INT);
+Example: 
+CREATE TABLE caltacys.doctor(
+id int primary key,
+name varchar(255) NOT NULL,
+department varchar(255) NOT NULL,
+experience int
+);
 
-The table name can coincide with the daatabase name
+2. CREATE FOREIGN KEY
+CREAT TABLE caltacys.patient(
+id int primary key,
+name varchar(255) NOT NULL,
+DOB date NOT NULL,
+doctor_id int,
+foreign key (doctor_id) REFERENCES doctor(id)
+);
 
 
 THE ALTER STATEMENT
