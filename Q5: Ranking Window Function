@@ -4,3 +4,31 @@ SELECT RANK() DENSE_RANK() ROW_NUMBER() OVER (
 PARTITION BY column
 ORDER BY column )
 FROM table_name
+
+CONCERTS TABLE
+artist_id	artist_name	genre	concert_revenue	year_of_formation	country	number_of_members	album_released	label
+103	Taylor Swift	Pop	700000	2004	United States	1	9	Republic Records
+104	BTS	K-Pop	800000	2013	South Korea	7	7	Big Hit Music
+105	Adele	Pop	600000	2006	United Kingdom	1	3	Columbia Records
+109	Blackpink	K-Pop	450000	2016	South Korea	4	5	YG Entertainment
+110	Maroon 5	Pop	550000	1994	United States	5	7	Interscope Records
+
+1. Write a query to display the list of artists sorted in descending order of their concert revenue.
+
+RANK() Assigns ranks, handling tied values with the same rank. 
+SELECT artist_name, concert_revenue,
+RANK() OVER (ORDER BY concert_revenue) AS rank_num
+FROM concerts 
+
+ROW_NUMBER(): This function assigns a unique sequential number to each row within a window. 
+It's like numbering the rows in order.
+SELECT artist_name, concert_revenue,
+ROW NUMBER() OVER (ORDER BY concert_revenue) AS rank_num
+FROM concerts 
+
+DENSE_RANK(): Similar to RANK(), DENSE_RANK() also handles tied values by assigning the same rank. 
+However, it does not skip ranks, resulting in no gaps in the sequence.
+SELECT artist_name, concert_revenue,
+DENSE_RANK() OVER (ORDER BY concert_revenue) AS dense_rank_num
+FROM concerts
+
