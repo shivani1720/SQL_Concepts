@@ -1,3 +1,8 @@
+  WHAT IS A DATABASE
+  A database is a structured collection of data stored electronically, designed to efficently manage, 
+  retrieve and manipulate information. It organizes data into table, rows, columns ensuring data consistency,
+  accessibility and security
+
   SQL = Structured query language
   It is a programming language specifically designed for working with databases
   It allows you to CREATE, MANIPULATE, SHARE data especially from Relational database management systems.
