@@ -4,7 +4,6 @@ If DDL builds the house, DML is the furniture inside
 INSERT: Adds new rows of data into a table.
 UPDATE: Modifies existing data values.
 DELETE: Removes specific rows based on conditions.
-SELECT: Retrieves or reads data 
 
 1. INSERT DATA
 insert into caltycs.doctor (id, name, department, experience) valles
